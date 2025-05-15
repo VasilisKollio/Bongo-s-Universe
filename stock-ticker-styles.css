@@ -1,0 +1,162 @@
+/* Improved Stock Ticker Styles with Pixel Font Support */
+
+/* Import Pixel Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* Stock Ticker Container */
+.stock-ticker-container {
+    width: 100%;
+    background-color: #000;
+    color: white;
+    overflow: hidden;
+    padding: 10px 0;
+    border-top: 1px solid #333;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Press Start 2P', monospace; /* Pixel font as primary */
+}
+
+/* For browsers that don't support Press Start 2P */
+@supports not (font-family: 'Press Start 2P') {
+    .stock-ticker-container {
+        font-family: 'Courier New', monospace;
+    }
+}
+
+/* Ticker Wrapper with Edge Fading */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Fade effect on the left edge */
+.ticker-wrap::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to right, #000, transparent);
+    z-index: 2;
+}
+
+/* Fade effect on the right edge */
+.ticker-wrap::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to left, #000, transparent);
+    z-index: 2;
+}
+
+/* The scrolling ticker animation */
+.ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker-scroll 60s linear infinite;
+    padding: 5px 0;
+}
+
+/* Make animation slower on hover for readability */
+.ticker:hover {
+    animation-play-state: paused;
+}
+
+/* Individual stock item */
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    /* Enable pixelation for smoother pixel font */
+    image-rendering: pixelated;
+    text-rendering: geometricPrecision;
+}
+
+/* Stock Symbol */
+.stock-symbol {
+    font-size: 0.7rem; /* Smaller for pixel font */
+    color: #0090DB; /* Nasdaq blue */
+    margin-right: 10px;
+    letter-spacing: 1px;
+}
+
+/* Stock Price */
+.stock-price {
+    font-size: 0.7rem;
+    color: #fff;
+    margin-right: 10px;
+}
+
+/* Stock Change Value */
+.stock-change {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.5px;
+}
+
+/* Positive change (green) */
+.positive {
+    color: #00D467; /* Brighter green for better visibility */
+    background-color: rgba(0, 212, 103, 0.15);
+}
+
+/* Negative change (red) */
+.negative {
+    color: #FF4A4A; /* Brighter red for better visibility */
+    background-color: rgba(255, 74, 74, 0.15);
+}
+
+/* Error message styling */
+.ticker-item.error {
+    color: #FF4A4A;
+    font-weight: bold;
+}
+
+/* Scrolling Animation */
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Flash Effect for Updates */
+@keyframes price-flash {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+.price-update {
+    animation: price-flash 0.5s ease-in-out;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .ticker-item {
+        padding: 0 15px;
+    }
+    
+    .stock-symbol, .stock-price, .stock-change {
+        font-size: 0.6rem;
+    }
+    
+    .ticker {
+        animation-duration: 45s; /* Slightly faster on mobile */
+    }
+}
+
+/* Ensure smooth animations on all browsers */
+@media (prefers-reduced-motion: no-preference) {
+    .ticker {
+        will-change: transform;
+    }
+}

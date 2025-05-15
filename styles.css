@@ -1,0 +1,330 @@
+/* Stock Ticker Styles */
+.stock-ticker-container {
+    width: 100%;
+    background-color: #000;
+    color: white;
+    overflow: hidden;
+    padding: 12px 0;
+    border-top: 1px solid #333;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.ticker-wrap::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to right, #000, transparent);
+    z-index: 2;
+}
+
+.ticker-wrap::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to left, #000, transparent);
+    z-index: 2;
+}
+
+.ticker {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker-scroll 40s linear infinite;
+}
+
+.ticker-item {
+    display: inline-flex;
+    align-items: center;
+    padding: 0 20px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 600;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stock-symbol {
+    font-size: 1.1rem;
+    color: #0090DB; /* Nasdaq blue */
+    margin-right: 10px;
+    letter-spacing: 0.5px;
+}
+
+.stock-price {
+    font-size: 1.1rem;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.stock-change {
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 3px;
+}
+
+.positive {
+    color: #00C176; /* Bright green */
+    background-color: rgba(0, 193, 118, 0.15);
+}
+
+.negative {
+    color: #FF3A33; /* Bright red */
+    background-color: rgba(255, 58, 51, 0.15);
+}
+
+@keyframes ticker-scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Flash effect for price updates */
+@keyframes price-flash {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+.price-update {
+    animation: price-flash 0.5s ease-in-out;
+}
+
+/* Responsive adjustment for ticker */
+@media (max-width: 768px) {
+    .ticker-item {
+        padding: 0 10px;
+    }
+    
+    .stock-symbol, .stock-price, .stock-change {
+        font-size: 0.9rem;
+    }
+}
+/* Main Styles for Creature World Website */
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    min-height: 80vh;
+}
+
+/* Feature Section (Danny Cole) */
+.feature-section {
+    width: 50%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.feature-image {
+    margin-bottom: 1rem;
+}
+
+.feature-image img {
+    width: 100%;
+    max-width: 800px;
+    display: block;
+}
+
+.feature-text {
+    padding: 1rem 0;
+}
+
+.feature-text p {
+    font-size: 1.2rem;
+    color: #2463d6;
+}
+
+/* Branding Section (Creature World) */
+.branding-section {
+    width: 50%;
+    padding: 2rem;
+    position: relative;
+}
+
+.brand-title h1 {
+    font-size: 5rem;
+    font-weight: bold;
+    color: #2463d6;
+    line-height: 1;
+    margin-bottom: 2rem;
+    margin-left: -1.5rem; /* Move title more to the left */
+}
+
+/* Creatures */
+.creature {
+    position: absolute;
+    max-width: 150px;
+}
+
+.orange-creature {
+    top: 15%;
+    left: 35%; /* Position to the left of INFO */
+    z-index: 2;
+}
+
+.green-creature {
+    top: 75%;
+    left: 30%; /* Position to the left of EXPLORE */
+    z-index: 1;
+}
+
+.blue-creature {
+    top: 45%;
+    right: 20%; /* Position to the right of RECENT */
+    z-index: 3;
+}
+
+
+.info-section {
+    position: absolute;
+    top: 30%;
+    right: 5%;
+    z-index: 4;
+}
+
+.info-section h2 {
+    color: #2463d6;
+    font-size: 3rem;
+}
+
+.recent-section {
+    position: absolute;
+    top: 50%; /* Position it with equal spacing between INFO and EXPLORE */
+    right: 5%; /* Align it with the INFO section */
+    z-index: 4;
+}
+
+.recent-section h2 {
+    color: #2463d6;
+    font-size: 3rem;
+}
+
+.explore-section {
+    position: absolute;
+    top: 70%; /* Position it with equal spacing from RECENT */
+    right: 5%; /* Align all text sections in a column */
+    z-index: 4;
+}
+
+.explore-section h2 {
+    color: #2463d6;
+    font-size: 3rem;
+}
+
+/* Navigation Link Styles - ADD THIS NEW SECTION */
+.info-section a,
+.explore-section a,
+.recent-section a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Keep the same color as the parent */
+    display: block; /* Make link take up full area */
+    transition: transform 0.2s ease, color 0.2s ease; /* Smooth hover effect */
+}
+
+/* Hover effects for navigation links */
+.info-section a:hover,
+.explore-section a:hover,
+.recent-section a:hover {
+    color: #1e40af; /* Slightly darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge text on hover */
+}
+
+/* Active state for the current page */
+.info-section a.active,
+.explore-section a.active,
+.recent-section a.active {
+    color: #1e3a8a; /* Darker blue for current page */
+    font-weight: bold; /* Make current page bold */
+}
+/* END OF NEW SECTION */
+
+/* Footer Styles */
+footer {
+    background-color: #2463d6;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.social-icons {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-icon {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+/* Pixelated Social Media Icons */
+.pixelated-icon {
+    width: 32px;
+    height: 32px;
+    image-rendering: pixelated;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.email-icon {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAARklEQVQYlWNgIBH8+/fvP9OvX798/v79+x+bJAMTAwMDAxMDAwODkpKSMkwQbgITXBDZBBaYILIJyApgJqAogJmArgBdEgBvJBENQWQXLwAAAABJRU5ErkJggg==');
+}
+
+.instagram-icon {
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAXElEQVQYlWNgIBL8//+fgYmBgYHh37//DP/+/fvPwMDA8P//f4b///8zyDMwMDAwMTAwMMjIyDAwMDAwMDExMTAwMDAwiYmJMTAwMDAw/fv3j+Hfv38MTEAFTAwMDAwAS2cUCmcJg8IAAAAASUVORK5CYII=');
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    
+    .feature-section,
+    .branding-section {
+        width: 100%;
+    }
+    
+    .brand-title h1 {
+        font-size: 3rem;
+    }
+    
+    .info-section h2,
+    .explore-section h2 {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,183 @@
+/* walking-character.css */
+
+/* Character Container */
+.walking-character-container {
+    position: absolute;
+    top: -28px; /* Position above the ticker */
+    left: 50%; /* Start in the middle */
+    z-index: 10;
+    pointer-events: none; /* Makes sure it doesn't interfere with ticker interaction */
+}
+
+/* The Character */
+.pixel-character {
+    width: 32px;
+    height: 32px;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAAAgCAYAAACinX6EAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFIGlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNS42LWMxNDUgNzkuMTYzNDk5LCAyMDE4LzA4LzEzLTE2OjQwOjIyICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hvcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDI1LTA1LTE1VDEyOjI1OjM5KzAzOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyNS0wNS0xNVQxMjoyOToxNiswMzowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyNS0wNS0xNVQxMjoyOToxNiswMzowMCIgZGM6Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9maWxlPSJzUkdCIElFQzYxOTY2LTIuMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1YTFiMzk3NC1mYTM2LTAyNGUtODIzZC00MjI3YTcwZWFhNTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MWUyZjM4YzctODJiZS0zYTRiLTk3MTctNjM5NDZjZWMwMWZjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6MWUyZjM4YzctODJiZS0zYTRiLTk3MTctNjM5NDZjZWMwMWZjIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDoxZTJmMzhjNy04MmJlLTNhNGItOTcxNy02Mzk0NmNlYzAxZmMiIHN0RXZ0OndoZW49IjIwMjUtMDUtMTVUMTI6MjU6MzkrMDM6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCBDQyAyMDE5IChXaW5kb3dzKSIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6NWExYjM5NzQtZmEzNi0wMjRlLTgyM2QtNDIyN2E3MGVhYTU0IiBzdEV2dDp3aGVuPSIyMDI1LTA1LTE1VDEyOjI5OjE2KzAzOjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgQ0MgMjAxOSAoV2luZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+fDEfgwAAAN1JREFUaIHt1rENwjAQBdBnRBnBC4QNoqQMHaBIF2qmoGEQJAqmoKALLJAFsoBJQZwQxCWnOJYp8P90tuT/nM+OQr2DPSZosfgxWyxxwBYvl6CqfL/DZJ9u2c4EKYLEQiXVmcTNRUhsLm+SJjkEcYjYaR+dvcfkTMIliEMcAEfscL24nrCBtfg6/wvdgwN+HLRVbyFnTtIJQmhsHGfuF8MaVMCiM2cSG8IaGpXwqgQUYuYrYhkIFhBCi2N52BtC5j4KKOQcZUKQQSAEEFLOJGFf2j1RrZ0F9MX7AYGfQYgQcFxwAAAAAElFTkSuQmCC');
+    background-repeat: no-repeat;
+    background-size: 96px 32px; /* 3 frames of 32px width */
+    image-rendering: pixelated;
+    animation: sprite-animate 0.3s steps(3) infinite,
+               character-move 20s linear infinite;
+}
+
+/* Sprite Animation */
+@keyframes sprite-animate {
+    from { background-position: 0 0; }
+    to { background-position: -96px 0; } /* Move through all 3 frames */
+}
+
+/* Movement Animation */
+@keyframes character-move {
+    0% {
+        transform: translateX(-50vw) scaleX(1); /* Start from left side moving right */
+    }
+    49% {
+        transform: translateX(50vw) scaleX(1); /* Move to right side */
+    }
+    50% {
+        transform: translateX(50vw) scaleX(-1); /* Flip character to face left */
+    }
+    99% {
+        transform: translateX(-50vw) scaleX(-1); /* Move back to left */
+    }
+    100% {
+        transform: translateX(-50vw) scaleX(1); /* Reset facing right */
+    }
+}
+
+/* Add jumping animation on hover */
+.stock-ticker-container:hover .pixel-character {
+    animation: sprite-animate 0.3s steps(3) infinite,
+               character-move 20s linear infinite,
+               character-bounce 0.6s ease-in-out infinite;
+}
+
+@keyframes character-bounce {
+    0%, 100% { 
+        transform: translateY(0); 
+    }
+    50% { 
+        transform: translateY(-8px); 
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .walking-character-container {
+        top: -24px;
+    }
+    
+    .pixel-character {
+        transform: scale(0.8);
+    }
+}
+
+/* Jump Animation */
+.character-jump {
+    animation: jump 0.5s ease-out !important;
+}
+
+@keyframes jump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
+
+/* Excited Animation */
+.character-excited {
+    animation: excited 1s ease-in-out 3 !important;
+}
+
+@keyframes excited {
+    0%, 50%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-10px) rotate(-10deg); }
+    75% { transform: translateY(-10px) rotate(10deg); }
+}
+
+/* Clicked Animation */
+.character-clicked {
+    animation: clicked 0.5s ease-in-out !important;
+}
+
+@keyframes clicked {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+/* Speech Bubble */
+.speech-bubble {
+    position: absolute;
+    top: -40px;
+    left: 20px;
+    background-color: white;
+    color: black;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.6rem;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 20;
+}
+
+/* Speech Bubble Tail */
+.speech-bubble:after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10px;
+    border-width: 8px 8px 0;
+    border-style: solid;
+    border-color: white transparent;
+}
+
+/* Show Speech Bubble */
+.speech-bubble.show-bubble {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Happy/Sad Mood Indicators */
+.pixel-character[data-mood="happy"] {
+    /* Could add a happy color tint or other visual indicator */
+    filter: hue-rotate(30deg) brightness(1.2);
+}
+
+.pixel-character[data-mood="sad"] {
+    /* Could add a sad color tint or other visual indicator */
+    filter: hue-rotate(-30deg) brightness(0.9);
+}
+
+/* Character Interactions with Stock Changes */
+.stock-change.positive:hover ~ .walking-character-container .pixel-character {
+    animation: happy-jump 0.5s ease-out !important;
+}
+
+.stock-change.negative:hover ~ .walking-character-container .pixel-character {
+    animation: sad-tilt 0.5s ease-out !important;
+}
+
+@keyframes happy-jump {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(10deg); }
+}
+
+@keyframes sad-tilt {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(5px) rotate(-10deg); }
+}
+
+/* When stock ticker paused (hovered), keep character visible */
+.ticker:hover ~ .walking-character-container {
+    animation-play-state: paused;
+}
+
+/* Make sure character stays above ticker text */
+.walking-character-container {
+    z-index: 100;
+}

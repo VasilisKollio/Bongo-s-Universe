@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bongo*s Universe</title>
+    <!-- Pixel Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Stock Ticker Styles -->
+    <link rel="stylesheet" href="stock-ticker-styles.css">
+    <!-- Walking Character Styles -->
+    <link rel="stylesheet" href="walking-character.css">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <main class="container">
+        <!-- Left Section -->
+        <section class="feature-section">
+            <div class="feature-image">
+                <img src="Photos/cover_photo.png" alt="Bongo*s Universe Homepage Photo">
+            </div>
+            <div class="feature-text">
+                <p>Welcome to Bongo's Universe! Here you can look for creative inspiration and new art that I find on the internet. Please feel free to reach out. Enjoy!</p>
+            </div>
+        </section>
+
+        <!-- Right Section -->
+        <section class="branding-section">
+            <!-- Brand Title -->
+            <div class="brand-title">
+                <h1>BONGO*s UNIVERSE</h1>
+            </div>
+            
+            <!-- Navigation Text Elements -->
+            <div class="creatures">
+    <!-- Info Section -->
+    <div class="info-section">
+        <a href="info.html"><h2>INFO</h2></a>
+    </div>
+    
+    <!-- Explore Section -->
+    <div class="explore-section">
+        <a href="explore.html"><h2>EXPLORE</h2></a>
+    </div>
+    
+    <!-- As of Recent Section -->
+    <div class="recent-section">
+        <a href="recent.html"><h2>AS OF RECENT</h2></a>
+    </div>
+</div>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="contact">
+            <h2>CONTACT</h2>
+        </div>
+        <div class="social-icons">
+            <a href="mailto:vasiliskolliopoulos2@gmail.com" class="social-icon email"><i class="fas fa-envelope"></i></a>
+            <a href="#" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </footer>
+
+    <!-- Stock Ticker Section -->
+    <div class="stock-ticker-container">
+        <script>
+// Inline character interaction script - use this if the external file isn't working
+document.addEventListener('DOMContentLoaded', function() {
+    console.log("Inline character script is running!");
+    
+    // Get the character element
+    const character = document.querySelector('.pixel-character');
+    const container = document.querySelector('.stock-ticker-container');
+    
+    if (!character || !container) {
+        console.error("Character or container elements not found!");
+        return;
+    }
+    
+    console.log("Character and container elements found");
+    
+    // Make character react to stock changes
+    window.updateCharacterMoodState = function(stocksUp, stocksDown) {
+        console.log(`Updating character mood: Up stocks: ${stocksUp}, Down stocks: ${stocksDown}`);
+        
+        // Calculate if more stocks are up or down
+        const mood = stocksUp >= stocksDown ? 'happy' : 'sad';
+        
+        // Update character mood
+        character.setAttribute('data-mood', mood);
+    };
+});
+</script>
+
+<!-- Simple Character Implementation -->
+<style>
+/* Simple character that will definitely work */
+.walking-character-container {
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+}
+
+.pixel-character {
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    border-radius: 50%;
+    animation: simple-bounce 0.5s infinite alternate;
+}
+
+@keyframes simple-bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
+/* Happy/Sad States */
+.pixel-character[data-mood="happy"] {
+    background-color: #00ff00; /* Green when stocks are up */
+}
+
+.pixel-character[data-mood="sad"] {
+    background-color: #ff0000; /* Red when stocks are down */
+}
+</style>
+
+<!-- Add this right after your <div class="stock-ticker-container"> opening tag -->
+<div class="walking-character-container">
+    <div class="pixel-character"></div>
+        
+        <div class="stock-ticker">
+            <div class="ticker-wrap">
+                <div class="ticker" id="ticker">
+                    <!-- Stock data will be inserted here by JavaScript -->
+                    <!-- Loading Placeholder -->
+                    <div class="ticker-item">
+                        <span>LOADING MARKET DATA...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Include the stock ticker JavaScript file -->
+    <script src="stock-ticker.js"></script>
+    <!-- Include the character interaction JavaScript file -->
+    <script src="character-interaction.js"></script>
+</body>
+</html>
